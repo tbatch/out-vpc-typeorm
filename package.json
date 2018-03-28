@@ -1,0 +1,19 @@
+{
+  "name": "in-vpc-mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tim Batchelor <tim.batchelor@apiture.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/uuid": "^3.4.3",
+    "aws-lambda-typescript": "^1.0.2",
+    "gulp": "^3.9.1",
+    "mysql": "^2.15.0",
+    "typeorm": "^0.1.16"
+  }
+}

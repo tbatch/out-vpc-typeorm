@@ -1,0 +1,36 @@
+/* Change This */
+def stack = "out-vpc-typeorm"
+
+def region = "us-east-1"
+
+def aws_env = System.getProperty("aws_env")
+def aws_account = System.getProperty("aws_account")
+def aws_role = System.getProperty("aws_role")
+
+def stringGenerator = { String alphabet, int n ->
+  new Random().with {
+	(1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+  }
+}
+
+ext.envVars = [:]
+
+task deploy (dependsOn: [ ':rootProject:cloudformationDeploy' ]) {
+	doLast { task ->
+            println('deploying ${project}')
+            
+	}
+}
+
+task undeploy (dependsOn: [ 'cloudformationDeploy' ]) {
+	doLast { task ->
+		exec { 
+			environment << rootProject.envVars
+			workingDir(".")
+			executable("node")
+			args("remove")
+			args("--environment", "${aws_env}")
+
+		}
+	}
+}

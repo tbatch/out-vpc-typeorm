@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Lambda running outside the VPC connecting to the RDS.
+Resources:
+  outvpctypeorm:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.default
+      Runtime: nodejs6.10
+      MemorySize: 128
+      Timeout: 30 
+      CodeUri: .
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+                - ec2:CreateNetworkInterface
+                - ec2:DescribeNetworkInterfaces
+                - ec2:DeleteNetworkInterface 
+              Resource: '*'
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get

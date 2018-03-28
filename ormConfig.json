@@ -1,0 +1,9 @@
+{
+    "type": "mysql",
+    "name": "default",
+    "host": "connection-profiling.cluster-cannmwdrq9qk.us-east-1.rds.amazonaws.com",
+    "port": 3306,
+    "username": "root",
+    "password": "L289b!tTlK$$",
+    "database": "profiling"
+}
